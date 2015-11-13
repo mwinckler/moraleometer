@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using MoraleOMeter.Areas.HelpPage.ModelDescriptions;
 using MoraleOMeter.Areas.HelpPage.Models;
+using StructureMap;
 
 namespace MoraleOMeter.Areas.HelpPage.Controllers
 {
@@ -13,6 +14,7 @@ namespace MoraleOMeter.Areas.HelpPage.Controllers
     {
         private const string ErrorViewName = "Error";
 
+        [DefaultConstructor]
         public HelpController()
             : this(GlobalConfiguration.Configuration)
         {
