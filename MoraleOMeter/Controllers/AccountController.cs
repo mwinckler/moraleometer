@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MoraleOMeter.Models;
+using StructureMap;
 
 namespace MoraleOMeter.Controllers
 {
@@ -18,6 +19,7 @@ namespace MoraleOMeter.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        [DefaultConstructor]
         public AccountController()
         {
         }

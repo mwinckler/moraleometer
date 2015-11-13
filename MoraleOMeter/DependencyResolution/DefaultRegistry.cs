@@ -17,12 +17,10 @@
 
 namespace MoraleOMeter.DependencyResolution {
     using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.Owin.Security;
     using Models;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-    using System.Data.Entity;
     using System.Web;
 
     public class DefaultRegistry : Registry {
@@ -35,8 +33,8 @@ namespace MoraleOMeter.DependencyResolution {
                     scan.WithDefaultConventions();
                 });
 
-            For<IUserStore<ApplicationUser>>().Use<UserStore<ApplicationUser>>();
-            For<DbContext>().Use(new ApplicationDbContext());
+            //For<IUserStore<ApplicationUser>>().Use<UserStore<ApplicationUser>>();
+            // For<DbContext>().Use(new ApplicationDbContext());
             For<IAuthenticationManager>().Use(() => HttpContext.Current.GetOwinContext().Authentication);
             
         }
