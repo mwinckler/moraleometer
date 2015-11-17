@@ -1,2 +1,14 @@
 ﻿<input type="text" ng-model="models.helloAngular" />
 <h1>{{models.helloAngular}}</h1>
+
+<ul>
+    <li><a ui-sref="about">About</a></li>
+    <li><a ui-sref="dashboard">User details</a></li>
+    <li><a ui-sref="login">Log in/Sign Up</a></li>
+    <li><a ui-sref="logout">Log out</a></li>
+    <!-- ><li><a href="/register">Sign up</a></li> -->
+</ul>
+
+<div ui-view="main"></div>
+
+<div ui-view="secondary"></div>

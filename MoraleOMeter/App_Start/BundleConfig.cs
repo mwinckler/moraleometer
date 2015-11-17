@@ -11,10 +11,12 @@ namespace MoraleOMeter
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/angular")
-                .Include("~/Scripts/angular.js"));
+                .Include("~/Scripts/angular.min.js")
+                .Include("~/Scripts/angular-ui-router.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
                 .IncludeDirectory("~/Scripts/app/controllers", "*.js")
+                .IncludeDirectory("~/Scripts/app/factories", "*.js")
                 .IncludeDirectory("~/Scripts/app", "*.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -29,8 +31,7 @@ namespace MoraleOMeter
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
                  "~/Content/Site.css"));
-
-            BundleTable.EnableOptimizations = false;
+            
         }
     }
 }
