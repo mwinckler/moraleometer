@@ -1,6 +1,5 @@
 ﻿var moraleometer = angular.module('moraleometer', ['ui.router']);
 
-moraleometer.controller('LandingPageController', LandingPageController);
 moraleometer.controller('LoginController', LoginController);
 moraleometer.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 moraleometer.factory('LoginFactory', LoginFactory);
@@ -38,13 +37,24 @@ moraleometer.config(['$stateProvider', '$httpProvider', '$locationProvider',
             })
             .state('logout', {
                 url: '/logout',
-                views: {
-                    'main': {
-                        templateUrl: '/logout',
-                        controller: LoginController
-                    }
+                controller: function($scope, $route) {
+                    $route.reload();
                 }
             });
 
         $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
+        // This makes IsAjaxRequest method work. http://encosia.com/making-angulars-http-work-with-request-isajaxrequest/
+        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     }]);
+
+moraleometer.run(['$rootScope', function ($rootScope) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        $rootScope.isLoading = true;
+    });
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        // TODO: This is a naive implementation; will stop loading even if multiple requests are ongoing.
+        $rootScope.isLoading = false;
+    });
+
+
+}]);

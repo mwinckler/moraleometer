@@ -319,7 +319,6 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app\controllers\LandingPageController.js" />
     <Content Include="Scripts\app\controllers\LoginController.js" />
     <Content Include="Scripts\app\controllers\RegisterController.js" />
     <Content Include="Scripts\app\factories\AuthHttpResponseInterceptor.js" />
